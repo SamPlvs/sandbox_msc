@@ -80,7 +80,7 @@ def train(autoencoder, outDir, trainset, traindata):
     optimizer = torch.optim.Adam(autoencoder.parameters(), lr=opts.lr)
 
     # original image to plot using plot_encdec
-    oriEx = Variable(traindata.train_data[:5]
+    oriEx = np_var(traindata.train_data[:5]
                         .view(-1, 28*28).type(torch.FloatTensor)/255.)
 
     for epoch in range(opts.me):
