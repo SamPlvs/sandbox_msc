@@ -76,7 +76,9 @@ def visualize(autoencoder, outDir, trainset, traindata):
         encEx, oriEx = encEx.cpu(), oriEx.cpu()
 
     fig = plt.figure(figsize=(6, 6))
-    plt.scatter(encEx[:, 0], encEx[:, 1], c=traindata.train_labels[:200].numpy())
+    print(encEx[:, 0])
+    print(traindata.train_labels[:200].numpy())
+    plt.scatter(encEx[:, 0], encEx[:, 1], c=traindata.train_labels[:200].data.numpy())
     plt.colorbar()
     plt.savefig(os.path.join(opts.outDir, "latentSpace.png"))
     plt.close(fig)
