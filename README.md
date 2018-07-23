@@ -40,8 +40,8 @@ Install your packages (ex: pytorch):
 
 ## Recover and run your code 
 Install git and clone this repo: 
-* ``
-* ``
+* `apt-get install git`
+* `git clone `
 
 Run the code: 
 * ``
