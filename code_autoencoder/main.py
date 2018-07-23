@@ -67,7 +67,8 @@ def plot_encdec(dec, ori, step, epoch):
 
 def visualize(autoencoder, outDir, trainset, traindata):
     # get your latent space in 2D (should try t-SNE representation later on)
-
+    autoencoder.eval()
+    
     oriEx = np_var(traindata.train_data[:200]
                         .view(-1, 28*28).type(torch.FloatTensor)/255.)
     encEx, _ = autoencoder.forward(oriEx)
@@ -78,7 +79,7 @@ def visualize(autoencoder, outDir, trainset, traindata):
     fig = plt.figure(figsize=(6, 6))
     print(encEx[:, 0])
     print(traindata.train_labels[:200].numpy())
-    plt.scatter(encEx[:, 0], encEx[:, 1], c=traindata.train_labels[:200].data.numpy())
+    plt.scatter(encEx[:, 0], encEx[:, 1], c=traindata.train_labels[:200].numpy())
     plt.colorbar()
     plt.savefig(os.path.join(opts.outDir, "latentSpace.png"))
     plt.close(fig)
