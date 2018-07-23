@@ -25,6 +25,10 @@ def get_args():
 
     return parser.parse_args()
 
+def np_var(x):
+    if torch.cuda.is_available():
+        x = x.cuda()
+    return Variable(x)
 
 def test_dataset(traindata, trainset):
     print("training data size:", traindata.train_data.size()) # (60000, 28, 28)
@@ -82,8 +86,8 @@ def train(autoencoder, outDir, trainset, traindata):
     for epoch in range(opts.me):
         for step, (x, y) in enumerate(trainset):
             autoencoder.train()
-            x = Variable(x.view(-1, 28*28))   # batch x, shape (batch, 28*28)
-            y = Variable(y)                   # batch label
+            x = np_var(x.view(-1, 28*28))   # batch x, shape (batch, 28*28)
+            y = np_var(y)                   # batch label
 
             z, rec = autoencoder.forward(x)
 
