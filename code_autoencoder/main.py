@@ -20,7 +20,7 @@ def get_args():
     parser.add_argument('--bs', default=128, type=int)  # batchSize
     parser.add_argument('--me', default=15, type=int)  # max epoch
     parser.add_argument('--lr', default=0.005, type=float) # learning rate
-    parser.add_argument('--outDir', default='../../experiments/', type=str)
+    parser.add_argument('--outDir', default='../experiments/', type=str)
     parser.add_argument('--nz', default=2, type=int)  # latent code dimension
 
     return parser.parse_args()
@@ -105,6 +105,9 @@ def train(autoencoder, outDir, trainset, traindata):
 if __name__ == '__main__':
 
     opts = get_args()
+    
+    if not os.path.exists(opts.outDir):
+        os.makedirs(opts.outDir)
 
     # mnist digits dataset
     transforms_ = torchvision.transforms.ToTensor()
