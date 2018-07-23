@@ -30,6 +30,12 @@ def np_var(x):
         x = x.cuda()
     return Variable(x)
 
+def var_np(x):
+    if torch.cuda.is_available():
+        x = x.cpu()
+    return x.data.numpy()
+
+
 def test_dataset(traindata, trainset):
     print("training data size:", traindata.train_data.size()) # (60000, 28, 28)
     print("training labels size:", traindata.train_labels.size()) # (60000,)
@@ -107,6 +113,7 @@ def train(autoencoder, outDir, trainset, traindata):
 
                 # plotting encoded/decoded image
                 _, decEx = autoencoder.forward(oriEx)
+                decEx, oriEx = var_np(decEx), var_np(oriEx)
                 plot_encdec(dec=decEx, ori=oriEx, step=step, epoch=epoch)
 
 
