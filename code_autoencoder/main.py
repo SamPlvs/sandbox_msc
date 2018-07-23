@@ -68,7 +68,7 @@ def plot_encdec(dec, ori, step, epoch):
 def visualize(autoencoder, outDir, trainset, traindata):
     # get your latent space in 2D (should try t-SNE representation later on)
 
-    oriEx = Variable(traindata.train_data[:200]
+    oriEx = np_var(traindata.train_data[:200]
                         .view(-1, 28*28).type(torch.FloatTensor)/255.)
     encEx, _ = autoencoder.forward(oriEx)
     fig = figure(figsize=(6, 6))
