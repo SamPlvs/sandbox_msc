@@ -91,13 +91,8 @@ def train(autoencoder, outDir, trainset, traindata):
             autoencoder.train()
             x = np_var(x.view(-1, 28*28))   # batch x, shape (batch, 28*28)
             y = np_var(y)                   # batch label
-            print('x', x.type())
-            print('y', y.type())
 
             z, rec = autoencoder.forward(x)
-            print('z', z.type())
-            print('rec', rec.type())
-
 
             loss = autoencoder.lossfunc(rec, x)  # mean square error
 
