@@ -77,8 +77,6 @@ def visualize(autoencoder, outDir, trainset, traindata):
         encEx, oriEx = encEx.detach().cpu(), oriEx.detach().cpu()
 
     fig = plt.figure(figsize=(6, 6))
-    print(encEx[:, 0])
-    print(traindata.train_labels[:200].numpy())
     plt.scatter(encEx[:, 0], encEx[:, 1], c=traindata.train_labels[:200].numpy())
     plt.colorbar()
     plt.savefig(os.path.join(opts.outDir, "latentSpace.png"))
@@ -127,7 +125,7 @@ if __name__ == '__main__':
     transforms_ = torchvision.transforms.ToTensor()
     traindata = torchvision.datasets.MNIST(root=opts.root, train=True,
                  transform=transforms_, download=True)
-    trainset = DataLoader(dataset=traindata, batch_size=opts.bs, shuffle=True)
+    trainset = DataLoader(dataset=traindata, batch_size=opts.bs, shuffle=False)
 
     # getting the structure of your autoencoder
     autoencoder = AutoEncoder(opts.nz)
