@@ -18,7 +18,7 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--root', default='../mnist/', type=str)
     parser.add_argument('--bs', default=512, type=int)  # batchSize
-    parser.add_argument('--me', default=5, type=int)  # max epoch
+    parser.add_argument('--me', default=1, type=int)  # max epoch
     parser.add_argument('--lr', default=0.005, type=float) # learning rate
     parser.add_argument('--outDir', default='../experiments/', type=str)
     parser.add_argument('--nz', default=2, type=int)  # latent code dimension
@@ -71,6 +71,10 @@ def visualize(autoencoder, outDir, trainset, traindata):
     oriEx = np_var(traindata.train_data[:200]
                         .view(-1, 28*28).type(torch.FloatTensor)/255.)
     encEx, _ = autoencoder.forward(oriEx)
+
+    if torch.cuda.is_available():
+        encEx, oriEx = encEx.cpu(), oriEx.cpu()
+
     fig = plt.figure(figsize=(6, 6))
     plt.scatter(encEx[:, 0], encEx[:, 1], c=traindata.train_labels[:200].numpy())
     plt.colorbar()
