@@ -27,10 +27,11 @@ def get_args():
 def test_dataset(traindata, trainset):
     print("training data size:", traindata.train_data.size()) # (60000, 28, 28)
     print("training labels size:", traindata.train_labels.size()) # (60000,)
+    fig = plt.figure()
     plt.imshow(traindata.train_data[2].numpy(), cmap='gray')
     plt.title('%i' % traindata.train_labels[2])
-    plt.savefig(join(opts.outDir, "test.png"))
-    plt.close()
+    fig.savefig(join(opts.outDir, "test.png"))
+    plt.close(fig)
 
     x, t = iter(trainset).next()
     print("trainset data size:", x.size()) # (batchSize, 1, 28, 28)
@@ -51,8 +52,8 @@ def plot_encdec(dec, ori, step, epoch):
         a[1][i].clear()
         a[1][i].imshow(np.reshape(dec.data.numpy()[i], (28, 28)), cmap='gray')
         a[1][i].set_xticks(()); a[1][i].set_yticks(())
-    plt.savefig(join(opts.outDir, "epoch{}_step{}.png".format(epoch,step)))
-    plt.close()
+    f.savefig(join(opts.outDir, "epoch{}_step{}.png".format(epoch,step)))
+    plt.close(f)
 
 
 def visualize(autoencoder, outDir, trainset, traindata):
