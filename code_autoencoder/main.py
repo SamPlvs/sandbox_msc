@@ -11,7 +11,7 @@ from matplotlib import cm
 import numpy as np
 from model import AutoEncoder
 import argparse
-from os.path import join
+import os
 
 
 def get_args():
@@ -32,7 +32,7 @@ def test_dataset(traindata, trainset):
     fig = plt.figure()
     plt.imshow(traindata.train_data[2].numpy(), cmap='gray')
     plt.title('%i' % traindata.train_labels[2])
-    fig.savefig(join(opts.outDir, "test.png"))
+    fig.savefig(os.path.join(opts.outDir, "test.png"))
     plt.close(fig)
 
     x, t = iter(trainset).next()
@@ -54,7 +54,7 @@ def plot_encdec(dec, ori, step, epoch):
         a[1][i].clear()
         a[1][i].imshow(np.reshape(dec.data.numpy()[i], (28, 28)), cmap='gray')
         a[1][i].set_xticks(()); a[1][i].set_yticks(())
-    f.savefig(join(opts.outDir, "epoch{}_step{}.png".format(epoch,step)))
+    f.savefig(os.path.join(opts.outDir, "epoch{}_step{}.png".format(epoch,step)))
     plt.close(f)
 
 
@@ -67,7 +67,7 @@ def visualize(autoencoder, outDir, trainset, traindata):
     plt.figure(figsize=(6, 6))
     plt.scatter(encEx[:, 0], encEx[:, 1], c=traindata.train_labels[:200].numpy())
     plt.colorbar()
-    plt.savefig(join(opts.outDir, "latentSpace.png"))
+    plt.savefig(os.path.join(opts.outDir, "latentSpace.png"))
     plt.close()
 
 
@@ -105,7 +105,7 @@ def train(autoencoder, outDir, trainset, traindata):
 if __name__ == '__main__':
 
     opts = get_args()
-    
+
     if not os.path.exists(opts.outDir):
         os.makedirs(opts.outDir)
 
