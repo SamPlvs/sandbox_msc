@@ -71,7 +71,7 @@ def visualize(autoencoder, outDir, trainset, traindata):
     oriEx = np_var(traindata.train_data[:200]
                         .view(-1, 28*28).type(torch.FloatTensor)/255.)
     encEx, _ = autoencoder.forward(oriEx)
-    fig = figure(figsize=(6, 6))
+    fig = plt.figure(figsize=(6, 6))
     plt.scatter(encEx[:, 0], encEx[:, 1], c=traindata.train_labels[:200].numpy())
     plt.colorbar()
     plt.savefig(os.path.join(opts.outDir, "latentSpace.png"))
@@ -126,7 +126,7 @@ if __name__ == '__main__':
     autoencoder = AutoEncoder(opts.nz)
 
     # useful when you have a GPU (link pytorch to CUDA)
-    if autoencoder.useCUDA:
+    if torch.cuda.is_available():
        autoencoder.cuda()
 
     print("test the data")
