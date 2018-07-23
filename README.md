@@ -7,8 +7,6 @@ Each student has been assigned to a [container](https://www.docker.com/what-cont
 * change your pasword: `passwd`
 * go to your repository: `cd /data/user/<user name>`
 
-
-## Upgrade your container
 Make sure you update the container, to be up-to-date: 
 * `apt-get update`
 * `apt-get upgrade`
@@ -41,19 +39,16 @@ Install your packages (ex: pytorch):
 ## Recover and run your code 
 Install git and clone this repo: 
 * `apt-get install git`
-* `git clone `
+* `git clone https://github.com/a-pouplin/sandbox_msc.git`: you can clone your own repo, also from Bitbucket
+* `cd sandbox_msc`
+* `while read requirement; do conda install --yes $requirement; done < requirements.txt`: install the packages
 
 Run the code: 
-* ``
-* ``
+* `CUDA_VISIBLE_DEVICES=0 python main.py`
 
 Dowload your file with scp (you can also use FileZilla): 
-* ``
+* `scp -r -P <port number> root@bg-beast.bg.ic.ac.uk:<path on beast> <path on your computer>`
 
-# Miscellaneous
-## Filezilla 
-## tmux
-## HPC
 
 
 
