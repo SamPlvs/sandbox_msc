@@ -17,7 +17,7 @@ import os
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--root', default='../mnist/', type=str)
-    parser.add_argument('--bs', default=512, type=int)  # batchSize
+    parser.add_argument('--bs', default=256, type=int)  # batchSize
     parser.add_argument('--me', default=10, type=int)  # max epoch
     parser.add_argument('--lr', default=0.005, type=float) # learning rate
     parser.add_argument('--outDir', default='../experiments/', type=str)
