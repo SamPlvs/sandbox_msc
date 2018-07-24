@@ -29,7 +29,7 @@ At the end of your file, look for: `export PATH="/root/anaconda3/bin:$PATH"`. If
 
 ## Create your virtual environment
 A virtual environnment is like a small container where you can install all the packages you need for a project. You can create as many virtual environments as you like [with conda](https://conda.io/docs/user-guide/tasks/manage-environments.html)
-* `conda install -n <name environment> python=x.x` 
+* `conda create -n <name environment> python=x.x` 
 * `source activate <name environment>`: to activate your environment.
 * `source deactivate`: to deactivate your environment.
 
