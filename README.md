@@ -1,4 +1,5 @@
-Congrats ! You have won a GPU. What do you need to do, next:
+Congrats ! You have won a GPU. 
+What you need to do, next:
 
 ## Access to your container
 Each student has been assigned to a [container](https://www.docker.com/what-container), which is a small machine hosted by the system and linked to the GPUs. You can access your container via a [secure network protocol](https://en.wikipedia.org/wiki/Secure_Shell) and your [port number](https://en.wikipedia.org/wiki/Port_(computer_networking)). Make sure you are connected to the Imperial network, using a [VPN](https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/remote-access/method/set-up-vpn/).
@@ -46,7 +47,7 @@ Install git and clone this repo:
 Run the code: 
 * `CUDA_VISIBLE_DEVICES=X python main.py`: with X={0,1,2,3}. If you want to use GPU_0: X=0 
 
-Dowload your file with scp (you can also use FileZilla): 
+Dowload your file with [scp](https://en.wikipedia.org/wiki/Secure_copy) (you can also use FileZilla): 
 * `scp -r -P <port number> root@bg-beast.bg.ic.ac.uk:<path on beast> <path on your computer>`
 
 
