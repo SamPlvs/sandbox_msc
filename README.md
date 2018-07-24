@@ -41,13 +41,18 @@ Install git and clone this repo:
 * `apt-get install git`
 * `git clone https://github.com/a-pouplin/sandbox_msc.git`: you can clone your own repo, also from Bitbucket
 * `cd sandbox_msc`
-* `while read requirement; do conda install --yes $requirement; done < requirements.txt`: install the packages
+* `conda install matplotlib`: install the packages (here you only need pytorch and matplotlib with python 2)
 
 Run the code: 
-* `CUDA_VISIBLE_DEVICES=0 python main.py`
+* `CUDA_VISIBLE_DEVICES=X python main.py`: with X={0,1,2,3}. If you want to use GPU_0: X=0 
 
 Dowload your file with scp (you can also use FileZilla): 
 * `scp -r -P <port number> root@bg-beast.bg.ic.ac.uk:<path on beast> <path on your computer>`
+
+
+## Miscellaneous
+* Tutorial Tianhong: [here](https://docs.google.com/document/d/1LKHZkVa6_gN9ZUpsMOahxrDiHWWGks9_FCUOdyS1Fe4/edit)
+* Instead of scp your file, you can use FileZilla : [here](https://filezilla-project.org/)
 
 
 
