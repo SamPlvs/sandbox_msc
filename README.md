@@ -4,7 +4,7 @@ What you need to do, next:
 ## Access to your container
 Each student has been assigned to a [container](https://www.docker.com/what-container), which is a small machine hosted by the system and linked to the GPUs. You can access your container via a [secure network protocol](https://en.wikipedia.org/wiki/Secure_Shell) and your [port number](https://en.wikipedia.org/wiki/Port_(computer_networking)). Make sure you are connected to the Imperial network, using a [VPN](https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/remote-access/method/set-up-vpn/).
 
-* connect to your container: `ssh -p <port number> root@bg-beast.bg.ac.uk`
+* connect to your container: `ssh -p <port number> root@bg-beast.bg.ic.ac.uk`
 * change your pasword: `passwd`
 * go to your repository: `cd /data/user/<user name>`
 
